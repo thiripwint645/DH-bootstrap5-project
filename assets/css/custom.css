@@ -279,7 +279,6 @@ body {
 }
 
 @media screen and (max-width: 768px) {
-   
     .slick-prev,
     .slick-next {
         top: 35%;
