@@ -35,12 +35,16 @@ var waypoint = new Waypoint({
 });
 
 // Theme
+
 let card = document.querySelectorAll(".card");
-let changeThemeToDark = () => {
+
+const changeThemeToDark = () => {
     document.documentElement.setAttribute("data-theme", "dark");
     document.querySelector(".navbar").classList.remove("shadow-lg");
+    document.querySelector(".navbar").classList.add("border-bottom");
     document.querySelector(".navbar").classList.add("pdf-border-zinc-800");
     localStorage.setItem("data-theme", "dark");
+    document.getElementById("theme").setAttribute("content", "#18181b");
 
     for (let x = 0; x < card.length; x++) {
         card[x].classList.remove("shadow-xl");
@@ -49,12 +53,13 @@ let changeThemeToDark = () => {
     }
 };
 
-let changeThemeToLight = () => {
+const changeThemeToLight = () => {
     document.documentElement.setAttribute("data-theme", "light");
     document.querySelector(".navbar").classList.add("shadow-lg");
     document.querySelector(".navbar").classList.remove("border-bottom");
     document.querySelector(".navbar").classList.remove("pdf-border-zinc-800");
     localStorage.setItem("data-theme", "light");
+    document.getElementById("theme").setAttribute("content", "#fff");
 
     for (let x = 0; x < card.length; x++) {
         card[x].classList.add("shadow-xl");
@@ -62,7 +67,9 @@ let changeThemeToLight = () => {
         card[x].classList.remove("pdf-border-zinc-800");
     }
 };
+
 let changeTheme = document.getElementById("changeTheme");
+
 changeTheme.addEventListener("change", () => {
     let theme = localStorage.getItem("data-theme");
     if (theme === "dark") {
@@ -71,6 +78,7 @@ changeTheme.addEventListener("change", () => {
         changeThemeToDark();
     }
 });
+
 let theme = localStorage.getItem("data-theme");
 if (theme === "dark") {
     changeThemeToDark();
